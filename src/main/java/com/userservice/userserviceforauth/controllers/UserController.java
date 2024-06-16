@@ -34,8 +34,30 @@ public class UserController {
 
     @PostMapping("/login")
     public Token login(@RequestBody LoginRequestDto loginRequestDto){
+        Token token = userService.login(
+                loginRequestDto.getEmail(),
+                loginRequestDto.getPassword()
+        );
+        /*
+        //token that we get from this method
+        {
+    "id": 2,
+    "deleted": null,
+    "value": "eWbnzZvwwWLzJVgQMJerCtaXqztQbPBexYgEPcxFlyRwjVoHgiABVmbkIZYTBCUNGBuueKEqatfHkIrgvcSpZTyUNSlHfEaKYgwholuUVRajchunQQjwbgTivHDnlFBC",
+    "user": {
+        "id": 1,
+        "deleted": null,
+        "name": "Mohammad Ayan",
+        "hashedPassword": "$2a$10$tAF2GzrF4erbaq3dcpzhYu9BnGEuOCdjqonWkVuGtm01fL9Eu0UsS",
+        "email": "ayanBro@gmail.com",
+        "roles": [],
+        "isEmailVerified": true
+    },
+    "expireAt": "2024-07-15T18:30:00.000+00:00"
+}
+        * */
 
-        return null;
+        return token;
     }
 
     @PostMapping("/logout")
